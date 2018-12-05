@@ -20,6 +20,30 @@ class Notes extends Component {
       items: NoteArray,
       focus: obj
     });
+    return obj;
+  }
+
+  _onChange(event) {
+    let obj = this.state.focus;
+    obj.content = event.target.value;
+    this.setState({
+      focus: obj
+    });
+  }
+
+  _onSubmit(event) {
+    event.preventDefault();
+    let obj = this.state.focus;
+    let newNoteArray = NoteArray.map(note => {
+      if (note.id === obj.id) {
+        return obj;
+      } else {
+        return note;
+      }
+    });
+    this.setState({
+      items: newNoteArray
+    });
   }
 
   render() {
@@ -30,7 +54,11 @@ class Notes extends Component {
           notes={this.state.items}
           onClick={this._handleClick.bind(this)}
         />
-        <Editor content={this.state.focus.content} />
+        <Editor
+          content={this.state.focus.content}
+          onChange={this._onChange.bind(this)}
+          onSubmit={this._onSubmit.bind(this)}
+        />
       </div>
     );
   }
