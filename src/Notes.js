@@ -50,15 +50,17 @@ class Notes extends Component {
     return (
       <div className="notesApp">
         <Searchform />
-        <NotesList
-          notes={this.state.items}
-          onClick={this._handleClick.bind(this)}
-        />
-        <Editor
-          content={this.state.focus.content}
-          onChange={this._onChange.bind(this)}
-          onSubmit={this._onSubmit.bind(this)}
-        />
+        <div className="ListEditor">
+          <NotesList
+            notes={this.state.items}
+            onClick={this._handleClick.bind(this)}
+          />
+          <Editor
+            content={this.state.focus.content}
+            onChange={this._onChange.bind(this)}
+            onSubmit={this._onSubmit.bind(this)}
+          />
+        </div>
       </div>
     );
   }

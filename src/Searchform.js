@@ -2,10 +2,12 @@ import React from "react";
 
 function Searchform(props) {
   return (
-    <form onSubmit={props.onSubmit}>
-      <input type="text" placeholder="Search" onChange={props.onChange} />
-      <input type="submit" />
-    </form>
+    <div className="searchBar">
+      <form onSubmit={props.onSubmit}>
+        <input type="text" placeholder="Search" onChange={props.onChange} />
+        <input type="submit" />
+      </form>
+    </div>
   );
 }
 
